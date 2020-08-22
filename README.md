@@ -55,4 +55,5 @@ Surface Energy Balance Algorithm for Land (SEBAL) was developed and validated by
 estimate evapotranspiration (ET) from energy balance equation (Rn – G = LE + H), where LE, Rn, G and H are Latent Heat Flux, Net Radiation, Soil Heat Flux and Sensible Heat Flux, respectively.
 SEBAL estimate LE as a residual of others energy fluxes (LE = Rn - LE - G)....
 
-![alt text](et-brasil/EESEBAL/Fluxogram2_corrigido.png?raw=true)
+## How EESEBAL works?
+![EESEBAL Fluxogram](../master/Fluxogram2_corrigido.png?raw=true)
