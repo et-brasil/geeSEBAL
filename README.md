@@ -6,6 +6,9 @@ A web application is also available (https://eesebal.etbrasil.org)
 ### Python functions: Image(), Collection() and TimeSeries().
 ### Javascript functions: image().
 
+![EESEBAL Fluxogram](../master/Images/ilustration.png?raw=true)
+
+
 ## How to use Google Earth Engine?
 Create an account in GEE (https://earthengine.google.com/)
  
