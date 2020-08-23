@@ -1,4 +1,6 @@
 # ETBRASIL - EESEBAL
+<img src="https://github.com/et-brasil/EESEBAL/blob/master/Images/eeSEBAL_logo_update_cut.png?raw=true" width="200">
+
 
 EESEBAL is a open-source implementation of Surface Energy Balance Algorithm for Land (SEBAL) using Google Earth Engine (GGE). EESEBAL is available in both Javascript and Python API.
 A web application is also available (https://eesebal.etbrasil.org)
@@ -6,7 +8,7 @@ A web application is also available (https://eesebal.etbrasil.org)
 ### Python functions: Image(), Collection() and TimeSeries().
 ### Javascript functions: image().
 
-![EESEBAL Fluxogram](../master/Images/ilustration.png?raw=true)
+![EESEBAL Fluxogram](../master/Images/ilustration.png?raw=true )
 
 
 ## How to use Google Earth Engine?
