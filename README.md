@@ -56,4 +56,4 @@ estimate evapotranspiration (ET) from energy balance equation (Rn – G = LE + H
 SEBAL estimate LE as a residual of others energy fluxes (LE = Rn - LE - G)....
 
 ## How EESEBAL works?
-![EESEBAL Fluxogram](../master/Fluxogram2_corrigido.png?raw=true)
+![EESEBAL Fluxogram](../master/Images/Fluxogram.png?raw=true)
