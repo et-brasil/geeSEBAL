@@ -2,8 +2,9 @@
 <img src="https://github.com/et-brasil/EESEBAL/blob/master/Images/geeSEBAL_logo_update_cut.png?raw=true" width="200">
 
 
-geeSEBAL is a open-source implementation of Surface Energy Balance Algorithm for Land (SEBAL) using Google Earth Engine (GEE). EESEBAL is available in both Javascript and Python API.
-A web application is also available (https://etbrasil.org/geesebal)
+geeSEBAL is a open-source implementation of Surface Energy Balance Algorithm for Land (SEBAL) using Google Earth Engine (GEE). geeSEBAL is available in both Javascript and Python API.\
+\
+A web application is also available (https://etbrasil.org/geesebal).
 
 ### Python functions: Image(), Collection() and TimeSeries().
 ### Javascript functions: image().
