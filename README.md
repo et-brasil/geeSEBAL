@@ -1,5 +1,5 @@
 # ETBRASIL - geeSEBAL
-<img src="https://github.com/et-brasil/EESEBAL/blob/master/Images/eeSEBAL_logo_update_cut.png?raw=true" width="200">
+<img src="https://github.com/et-brasil/EESEBAL/blob/master/Images/geeSEBAL_logo_update_cut.png?raw=true" width="200">
 
 
 geeSEBAL is a open-source implementation of Surface Energy Balance Algorithm for Land (SEBAL) using Google Earth Engine (GEE). EESEBAL is available in both Javascript and Python API.
@@ -60,5 +60,5 @@ Surface Energy Balance Algorithm for Land (SEBAL) was developed and validated by
 estimate evapotranspiration (ET) from energy balance equation (Rn – G = LE + H), where LE, Rn, G and H are Latent Heat Flux, Net Radiation, Soil Heat Flux and Sensible Heat Flux, respectively.
 SEBAL estimate LE as a residual of others energy fluxes (LE = Rn - LE - G)....
 
-## How EESEBAL works?
-![EESEBAL Fluxogram](../master/Images/Fluxogram.png?raw=true)
+## How geeSEBAL works?
+![geeSEBAL Fluxogram](../master/Images/Fluxogram.png?raw=true)
