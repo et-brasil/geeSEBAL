@@ -13,7 +13,8 @@ A web application is also available (https://etbrasil.org/geesebal).
 
 
 ## How to use Google Earth Engine?
-Create an account in GEE (https://earthengine.google.com/)
+
+You need an account in GEE (https://earthengine.google.com/).
  
 ### Python API
 
