@@ -1,14 +1,14 @@
-# ETBRASIL - EESEBAL
+# ETBRASIL - geeSEBAL
 <img src="https://github.com/et-brasil/EESEBAL/blob/master/Images/eeSEBAL_logo_update_cut.png?raw=true" width="200">
 
 
-EESEBAL is a open-source implementation of Surface Energy Balance Algorithm for Land (SEBAL) using Google Earth Engine (GGE). EESEBAL is available in both Javascript and Python API.
-A web application is also available (https://etbrasil.org/eesebal)
+geeSEBAL is a open-source implementation of Surface Energy Balance Algorithm for Land (SEBAL) using Google Earth Engine (GEE). EESEBAL is available in both Javascript and Python API.
+A web application is also available (https://etbrasil.org/geesebal)
 
 ### Python functions: Image(), Collection() and TimeSeries().
 ### Javascript functions: image().
 
-![EESEBAL Fluxogram](../master/Images/ilustration.png?raw=true )
+![geeSEBAL Fluxogram](../master/Images/ilustration.png?raw=true )
 
 
 ## How to use Google Earth Engine?
@@ -32,17 +32,17 @@ Editor code available (https://code.earthengine.google.com/)
 ## Examples
 ### Image
 ```python
-from etbrasil.eesebal import Image
+from etbrasil.geesebal import Image
 Image_ID=ee.Image('LANDSAT/LC08/C01/T1_SR/LC08_222081_20160118')
-EESEBAL_Image=Image(Image_ID)
+geeSEBAL_Image=Image(Image_ID)
 
 ```
 ### Collection
 ```python
-from etbrasil.eesebal import Collection
+from etbrasil.geesebal import Collection
 
 #inputs= init Year, init Month, init dat, end Year, end Month, end day, Cloud Cover
-EESEBAL_Collection=Collection(2000,1,1,2010,5,6,15)
+geeSEBAL_Collection=Collection(2000,1,1,2010,5,6,15)
 ```
 ### TimeSeries
 ```python
@@ -51,7 +51,7 @@ from etbrasil.eesebal import TimeSeries
 #inputs= init Year, init Month, init dat, end Year, end Month, end day, Cloud Cover,ee.Geometry.Point
 point=ee.Geometry.Point([-50.161317, -9.824870])
 
-EESEBAL_Collection=TimeSeries(2000,1,1,2010,5,6,15,point)
+geeSEBAL_Collection=TimeSeries(2000,1,1,2010,5,6,15,point)
 ```
 
 ## What is SEBAL?
