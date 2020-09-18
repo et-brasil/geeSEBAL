@@ -61,7 +61,7 @@ geeSEBAL_Collection=TimeSeries(2000,1,1,2010,5,6,15,point)
 Surface Energy Balance Algorithm for Land (SEBAL) was developed and validated by Bastiaanssen (Bastiaanssen, 1995; Bastiaanssen et al., 1998a, 1998b) to 
 estimate evapotranspiration (ET) from energy balance equation (Rn – G = LE + H), where LE, Rn, G and H are Latent Heat Flux, Net Radiation, Soil Heat Flux and Sensible Heat Flux, respectively.
 
-Im process...
+Working....
 
 ## How geeSEBAL works?
 ![geeSEBAL Fluxogram](../master/Images/Fluxogram.png?raw=true)
