@@ -24,7 +24,7 @@ exports.fexp_cold_pixel = function(image, p_top_NDVI, p_coldest_Ts) {
     geometry: image.geometry().bounds(), 
     scale: 30,
     maxPixels: 8e+12,
-    });
+    }); 
   var n_perc_low_LST = ee.Number(d_perc_low_LST.get('LST_NW'));
   var i_cold_lst = i_top_NDVI.updateMask(i_top_NDVI.select('LST_NW').lte(n_perc_low_LST));
   var c_lst_cold20 =  i_cold_lst.updateMask(image.select('LST_NW').gte(200));
