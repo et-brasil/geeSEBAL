@@ -33,7 +33,7 @@ exports.fexp_cold_pixel = function(image, p_top_NDVI, p_coldest_Ts) {
     .reduceRegion({reducer:  ee.Reducer.median(), geometry: image.geometry().bounds(), scale: 30, maxPixels: 1e9,});
    var n_med_lst_cold20 = ee.Number(med_lst_cold20.get('LST_NW'));  
     var sum_final_cold_pix = c_lst_cold20.select('int')
-   .reduceRegion({reducer:  ee.Reducer.sum(), geometry: image.geometry().bounds(), scale: 30, maxPixels: 1e9,});
+   .reduceRegion({reducer:  ee.Reducer.sum(), geometry: image.geometry().bounds(), scale: 30, maxPixels: 1e9,}); 
     var n_sum_final_cold_pix = ee.Number(sum_final_cold_pix.get('int'));  
 
    var dif_temp = c_lst_cold20.expression( 
