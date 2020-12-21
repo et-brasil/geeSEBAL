@@ -64,7 +64,6 @@ estimate evapotranspiration (ET) from energy balance equation (Rn – G = LE + H
 Working....
 
 ## How geeSEBAL works?
-![geeSEBAL Fluxogram](../master/Images/Fluxogram.png?raw=true)
 
 ## More about SEBAL:
 #### [Bastiaanssen, W.G.M., 1995. Regionalization of surface flux densities and moisture indicators in composite terrain: a remote sensing approach under clear skies in Mediterranean climates. Dr. thesis, Wageningen Agric. Univ. Wageningen Netherlands. SC-DLO, Wageningen. ](https://doi.org/90-5485-465-0)
