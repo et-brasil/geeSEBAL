@@ -16,7 +16,7 @@
 
 
 //FOLDERS //[CAUTION] If you create an own repository, change user .
-var MeteorologicalData = require('users/leolaipelt/geeSEBAL:gldas');
+var MeteorologicalData = require('users/leolaipelt/geeSEBAL:era5');
 var endmembers = require('users/leolaipelt/geeSEBAL:endmembers');
 var tools = require('users/leolaipelt/geeSEBAL:tools');
 var evapotranspiration = require('users/leolaipelt/geeSEBAL:evapotranspiration');
@@ -46,19 +46,19 @@ exports.ET_estimation = function(image_geeSEBAL,topNDVI,coldestTs,lowestNDVI,hot
   var p_hottest_Ts=ee.Number(hottestTs); //HOTTEST TS (FOR HOT PIXEL)
   
   //METEOROLOGY PARAMETERS - GLDAS 2.1 AND 2.0
-  var col_GLDAS =MeteorologicalData.gldas(image,time_start);
+  var col_ERA5 =MeteorologicalData.era5(image,time_start);
   
   //AIR TEMPERATURE [C]
-  var T_air = col_GLDAS.select('AirT_G'); 
+  var T_air = col_ERA5.select('AirT_G'); 
   
   //WIND SPEED [M S-1]
-  var ux= col_GLDAS.select('ux_G'); 
+  var ux= col_ERA5.select('ux_G'); 
   
   //RELATIVE HUMIDITY [%]
-  var UR = col_GLDAS.select('RH_G'); 
+  var UR = col_ERA5.select('RH_G'); 
   
   //NET RADIATION 24H [W M-2]
-  var Rn24hobs = col_GLDAS.select('Rn24h_G');  
+  var Rn24hobs = col_ERA5.select('Rn24h_G');  
   
   //SRTM DATA ELEVATION
   var SRTM_ELEVATION ='USGS/SRTMGL1_003'; 
