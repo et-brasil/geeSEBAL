@@ -1,15 +1,15 @@
 #----------------------------------------------------------------------------------------#
 #---------------------------------------//GEESEBAL//-------------------------------------#
 #GEESEBAL - GOOGLE EARTH ENGINE APP FOR SURFACE ENERGY BALANCE ALGORITHM FOR LAND (SEBAL)
-#CREATE BY: LEONARDO LAIPELT, RAFAEL KAYSER, ANDERSON RUHOFF AND AYAN FLEISCHMANN 
+#CREATE BY: LEONARDO LAIPELT, RAFAEL KAYSER, ANDERSON RUHOFF AND AYAN FLEISCHMANN
 #PROJECT - ET BRASIL https://etbrasil.org/
 #LAB - HIDROLOGIA DE GRANDE ESCALA [HGE] website: https://www.ufrgs.br/hge/author/hge/
 #UNIVERSITY - UNIVERSIDADE FEDERAL DO RIO GRANDE DO SUL - UFRGS
 #RIO GRANDE DO SUL, BRAZIL
 
 #DOI
-#VERSION 0.1
-#CONTATC US: leonardo.laipelt@ufrgs.br
+#VERSION 0.1.1
+#CONTACT US: leonardo.laipelt@ufrgs.br
 
 #----------------------------------------------------------------------------------------#
 #----------------------------------------------------------------------------------------#
@@ -20,29 +20,29 @@
 import ee
 
 #CLOUD REMOVAL
- 
+
 #FUNCTION TO MASK CLOUDS IN LANDSAT 5 AND 7 FOR SURFACE REFLECTANCE
 
 def f_cloudMaskL457_SR(image):
     quality = image.select('pixel_qa');
-    c01 = quality.eq(66);#CLEAR, LOW CONFIDENCE CLOUD 
-    c02 = quality.eq(68);#WATER, LOW CONFIDENCE CLOUD 
+    c01 = quality.eq(66);#CLEAR, LOW CONFIDENCE CLOUD
+    c02 = quality.eq(68);#WATER, LOW CONFIDENCE CLOUD
     mask = c01.Or(c02);
     return image.updateMask(mask);
 
 #FUNCTION FO MASK CLOUD IN LANDSAT 8 FOR SURFACE REFELCTANCE
 def f_cloudMaskL8_SR(image):
     quality = image.select('pixel_qa');
-    c01 = quality.eq(322); #CLEAR, LOW CONFIDENCE CLOUD 
-    c02 = quality.eq(324); #WATER, LOW CONFIDENCE CLOUD 
-    c03 = quality.eq(1346);#CLEAR TERRAIN 
+    c01 = quality.eq(322); #CLEAR, LOW CONFIDENCE CLOUD
+    c02 = quality.eq(324); #WATER, LOW CONFIDENCE CLOUD
+    c03 = quality.eq(1346);#CLEAR TERRAIN
     mask = c01.Or(c02).Or(c03);
     return image.updateMask(mask);
 
 #ALBEDO
-#TASUMI ET AL(2008) FOR LANDSAT 5 AND 7 
+#TASUMI ET AL(2008) FOR LANDSAT 5 AND 7
 def f_albedoL5L7(image):
-    
+
     alfa = image.expression(
       '(0.254*B1) + (0.149*B2) + (0.147*B3) + (0.311*B4) + (0.103*B5) + (0.036*B7)',{
         'B1' : image.select(['B']).divide(10000),

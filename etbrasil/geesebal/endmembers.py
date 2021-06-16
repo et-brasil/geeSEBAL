@@ -1,15 +1,15 @@
 #----------------------------------------------------------------------------------------#
 #---------------------------------------//GEESEBAL//-------------------------------------#
 #GEESEBAL - GOOGLE EARTH ENGINE APP FOR SURFACE ENERGY BALANCE ALGORITHM FOR LAND (SEBAL)
-#CREATE BY: LEONARDO LAIPELT, RAFAEL KAYSER, ANDERSON RUHOFF AND AYAN FLEISCHMANN 
+#CREATE BY: LEONARDO LAIPELT, RAFAEL KAYSER, ANDERSON RUHOFF AND AYAN FLEISCHMANN
 #PROJECT - ET BRASIL https://etbrasil.org/
 #LAB - HIDROLOGIA DE GRANDE ESCALA [HGE] website: https://www.ufrgs.br/hge/author/hge/
 #UNIVERSITY - UNIVERSIDADE FEDERAL DO RIO GRANDE DO SUL - UFRGS
 #RIO GRANDE DO SUL, BRAZIL
 
 #DOI
-#VERSION 0.1
-#CONTATC US: leonardo.laipelt@ufrgs.br
+#VERSION 0.1.1
+#CONTACT US: leonardo.laipelt@ufrgs.br
 
 #----------------------------------------------------------------------------------------#
 #----------------------------------------------------------------------------------------#
@@ -30,15 +30,15 @@ import ee
 #NDVI HOT = 10%
 #TS HOT = 20%
 
-#SELECT COLD PIXEL 
+#SELECT COLD PIXEL
 def fexp_cold_pixel(image, refpoly, p_top_NDVI, p_coldest_Ts):
 
   #IDENTIFY THE TOP % NDVI PIXELS
   d_perc_top_NDVI=image.select('NDVI_neg').reduceRegion(
-      reducer=ee.Reducer.percentile([p_top_NDVI]), 
-      geometry= refpoly, 
+      reducer=ee.Reducer.percentile([p_top_NDVI]),
+      geometry= refpoly,
       scale= 30,
-      maxPixels=9e14)     
+      maxPixels=9e14)
 
   #GET VALUE
   n_perc_top_NDVI= ee.Number(d_perc_top_NDVI.get('NDVI_neg'))
@@ -48,8 +48,8 @@ def fexp_cold_pixel(image, refpoly, p_top_NDVI, p_coldest_Ts):
 
   #SELECT THE COLDEST TS FROM PREVIOUS NDVI GROUP
   d_perc_low_LST = i_top_NDVI.select('LST_NW').reduceRegion(
-    reducer= ee.Reducer.percentile([p_coldest_Ts]), 
-    geometry=refpoly, 
+    reducer= ee.Reducer.percentile([p_coldest_Ts]),
+    geometry=refpoly,
     scale= 30,
     maxPixels=9e14
     )
@@ -64,16 +64,16 @@ def fexp_cold_pixel(image, refpoly, p_top_NDVI, p_coldest_Ts):
 
   #COUNT NUNMBER OF PIXELS
   count_final_cold_pix = c_lst_cold20.select('int').reduceRegion(
-        reducer=  ee.Reducer.count(), 
-        geometry= refpoly, 
-        scale= 30, 
+        reducer=  ee.Reducer.count(),
+        geometry= refpoly,
+        scale= 30,
         maxPixels=9e14)
-  n_count_final_cold_pix = ee.Number(count_final_cold_pix.get('int'))  
-  
+  n_count_final_cold_pix = ee.Number(count_final_cold_pix.get('int'))
+
   #SELECT COLD PIXEL RANDOMLY (FROM PREVIOUS SELECTION)
   def function_def_pixel(f):
       return f.setGeometry(ee.Geometry.Point([f.get('longitude'), f.get('latitude')]));
- 
+
   fc_cold_pix = c_lst_cold20.stratifiedSample(1, "int", refpoly, 30).map(function_def_pixel)
   n_Ts_cold = ee.Number(fc_cold_pix.aggregate_first('LST_NW'))
   n_long_cold = ee.Number(fc_cold_pix.aggregate_first('longitude'))
@@ -96,21 +96,21 @@ def fexp_hot_pixel(image, refpoly, p_lowest_NDVI, p_hottest_Ts):
 
   #IDENTIFY THE DOWN % NDVI PIXELS
   d_perc_down_ndvi=image.select('pos_NDVI').reduceRegion(
-      reducer=ee.Reducer.percentile([p_lowest_NDVI]), 
-      geometry= refpoly, 
+      reducer=ee.Reducer.percentile([p_lowest_NDVI]),
+      geometry= refpoly,
       scale= 30,
       maxPixels=9e14
        );
   #GET VALUE
-  n_perc_low_NDVI= ee.Number(d_perc_down_ndvi.get('pos_NDVI'))  
+  n_perc_low_NDVI= ee.Number(d_perc_down_ndvi.get('pos_NDVI'))
 
   #UPDATE MASK WITH NDVI VALUES
   i_low_NDVI = image.updateMask(image.select('pos_NDVI').lte(n_perc_low_NDVI));
 
   #SELECT THE HOTTEST TS FROM PREVIOUS NDVI GROUP
   d_perc_top_lst = i_low_NDVI.select('LST_neg').reduceRegion(
-    reducer= ee.Reducer.percentile([p_hottest_Ts]), 
-    geometry=refpoly, 
+    reducer= ee.Reducer.percentile([p_hottest_Ts]),
+    geometry=refpoly,
     scale= 30,
     maxPixels=9e14
     );
@@ -119,14 +119,14 @@ def fexp_hot_pixel(image, refpoly, p_lowest_NDVI, p_hottest_Ts):
   n_perc_top_lst = ee.Number(d_perc_top_lst.get('LST_neg'))
 
   c_lst_hotpix = i_low_NDVI.updateMask(i_low_NDVI.select('LST_neg').lte(n_perc_top_lst))
-  
+
   c_lst_hotpix_int=c_lst_hotpix.select('LST_NW').int().rename('int')
 
   #COUNT NUNMBER OF PIXELS
   count_final_hot_pix = c_lst_hotpix_int.select('int').reduceRegion(
-        reducer=  ee.Reducer.count(), 
-        geometry= refpoly, 
-        scale= 30, 
+        reducer=  ee.Reducer.count(),
+        geometry= refpoly,
+        scale= 30,
         maxPixels=9e14)
   n_count_final_hot_pix = ee.Number(count_final_hot_pix.get('int'))
 
@@ -135,7 +135,7 @@ def fexp_hot_pixel(image, refpoly, p_lowest_NDVI, p_hottest_Ts):
      return f.setGeometry(ee.Geometry.Point([f.get('longitude'), f.get('latitude')]))
 
   fc_hot_pix = c_lst_hotpix.stratifiedSample(1, "int", refpoly, 30).map(function_def_pixel)
-  n_Ts_hot = ee.Number(fc_hot_pix.aggregate_first('LST_NW')); 
+  n_Ts_hot = ee.Number(fc_hot_pix.aggregate_first('LST_NW'));
   n_long_hot = ee.Number(fc_hot_pix.aggregate_first('longitude'))
   n_lat_hot = ee.Number(fc_hot_pix.aggregate_first('latitude'))
   n_ndvi_hot = ee.Number(fc_hot_pix.aggregate_first('NDVI'))
@@ -151,6 +151,6 @@ def fexp_hot_pixel(image, refpoly, p_lowest_NDVI, p_hottest_Ts):
         'G': ee.Number(n_G_hot),
         'ndvi': ee.Number(n_ndvi_hot),
         'sum': ee.Number(n_count_final_hot_pix)})
-  
+
   #RETURN DICTIONARY
   return d_hot_pixel
