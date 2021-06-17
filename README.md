@@ -6,6 +6,8 @@ geeSEBAL is a open-source implementation of Surface Energy Balance Algorithm for
 \
 A web application is also available (https://etbrasil.org/geesebal).
 
+
+
 ### Python functions: Image(), Collection() and TimeSeries().
 ### Javascript functions: image().
 
@@ -61,9 +63,10 @@ geeSEBAL_Collection=TimeSeries(2000,1,1,2010,5,6,15,point)
 Surface Energy Balance Algorithm for Land (SEBAL) was developed and validated by Bastiaanssen (Bastiaanssen, 1995; Bastiaanssen et al., 1998a, 1998b) to 
 estimate evapotranspiration (ET) from energy balance equation (Rn – G = LE + H), where LE, Rn, G and H are Latent Heat Flux, Net Radiation, Soil Heat Flux and Sensible Heat Flux, respectively.
 
-Working....
 
-## How geeSEBAL works?
+## Cite this work
+ [Laipelt et al. (2021)] Long-term monitoring of evapotranspiration using the SEBAL algorithm and Google Earth Engine cloud computing. (https://doi.org/10.1016/j.isprsjprs.2021.05.018)
+ 
 
 ## More about SEBAL:
 #### [Bastiaanssen, W.G.M., 1995. Regionalization of surface flux densities and moisture indicators in composite terrain: a remote sensing approach under clear skies in Mediterranean climates. Dr. thesis, Wageningen Agric. Univ. Wageningen Netherlands. SC-DLO, Wageningen. ](https://doi.org/90-5485-465-0)
